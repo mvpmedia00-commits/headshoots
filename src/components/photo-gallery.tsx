@@ -52,13 +52,13 @@ export function PhotoGallery() {
           </button>
         ))}
       </div>
-      <div className="mt-8 columns-2 gap-3 sm:gap-4 lg:columns-3">
+      <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
         {items.map((item, index) => (
           <button
             key={item.src}
             type="button"
             onClick={() => setOpenIndex(index)}
-            className="group mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4a574] sm:mb-4"
+            className="group block aspect-[4/5] w-full overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4a574]"
           >
             <Image
               src={item.src}
@@ -66,7 +66,7 @@ export function PhotoGallery() {
               width={900}
               height={1200}
               sizes="(min-width: 1024px) 33vw, 50vw"
-              className="h-auto w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+              className="h-full w-full object-cover object-[center_30%] transition duration-500 group-hover:scale-[1.02]"
             />
             <span className="sr-only">View larger</span>
           </button>
