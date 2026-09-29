@@ -10,6 +10,7 @@ import {
   PHOTO_EMAIL,
   photoExtras,
   photoFaqs,
+  photoHero,
   photoOgImage,
   photoProcess,
   photoSessions,
@@ -78,28 +79,28 @@ export default function PhotoHomePage() {
         </div>
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           <Image
-            src="/photo/headshot-corporate.jpg"
-            alt="Corporate headshot of a man in glasses by an office window"
+            src={photoHero.src}
+            alt={photoHero.alt}
             width={1600}
-            height={2400}
+            height={1449}
             priority
             sizes="(min-width: 1024px) 26vw, 50vw"
             className="row-span-2 h-full w-full rounded-3xl object-cover"
           />
           <Image
-            src="/photo/headshot-executive.jpg"
-            alt="Executive headshot of a woman in a blazer by a window"
+            src="/photo/mvp-headshot-blazer.jpg"
+            alt="Headshot in a cream blazer and gold earrings against a dark background"
             width={1600}
-            height={2397}
+            height={1556}
             priority
             sizes="(min-width: 1024px) 22vw, 50vw"
-            className="aspect-[4/5] w-full rounded-3xl object-cover"
+            className="aspect-[4/5] w-full rounded-3xl object-cover object-top"
           />
           <Image
-            src="/photo/headshot-actor.jpg"
-            alt="Actor headshot on a gray backdrop"
+            src="/photo/mvp-headshot-glasses.jpg"
+            alt="Headshot with glasses and a dark green shirt on a charcoal backdrop"
             width={1600}
-            height={2399}
+            height={1571}
             priority
             sizes="(min-width: 1024px) 22vw, 50vw"
             className="aspect-[4/5] w-full rounded-3xl object-cover object-top"

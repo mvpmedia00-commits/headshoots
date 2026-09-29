@@ -38,10 +38,10 @@ export default function PhotoBookingPage() {
           ))}
         </ol>
         <Image
-          src="/photo/headshot-executive.jpg"
-          alt="Executive headshot of a woman in a blazer by a window"
+          src="/photo/mvp-headshot-blazer.jpg"
+          alt="Headshot in a cream blazer and gold earrings against a dark background"
           width={1600}
-          height={2397}
+          height={1556}
           sizes="(min-width: 1024px) 30vw, 0px"
           className="mt-10 hidden aspect-[4/3] w-full rounded-3xl object-cover object-[center_25%] lg:block"
         />

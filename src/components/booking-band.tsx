@@ -7,11 +7,11 @@ export function BookingBand() {
   return (
     <section className="relative overflow-hidden border-t border-white/10">
       <Image
-        src="/photo/headshot-beard.jpg"
+        src="/photo/mvp-headshot-vest.jpg"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover object-[center_30%] opacity-35"
+        className="object-cover object-[70%_30%] opacity-40"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#070707] via-[#070707]/85 to-[#070707]/40" />
       <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">

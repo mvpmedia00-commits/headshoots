@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "MVP Media — Chicago headshots and portraits",
     description:
       "Corporate headshots, branding, and portraits in Chicago. Book a session with Matthew Phillips.",
-    images: [{ url: photoOgImage, width: 1200, height: 1600, alt: "MVP Media headshot" }],
+    images: [{ url: photoOgImage, width: 1600, height: 1449, alt: "MVP Media headshot" }],
   },
   twitter: {
     card: "summary_large_image",

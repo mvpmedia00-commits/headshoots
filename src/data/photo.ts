@@ -3,19 +3,19 @@ export const PHOTO_BRAND = "MVP Media"
 export const PHOTO_CITY = "Chicago / Chicagoland"
 
 export const photoHero = {
-  src: "/photo/headshot-beard.jpg",
-  alt: "Cinematic studio headshot lighting — dark background, sharp catchlights",
+  src: "/photo/mvp-headshot-vest.jpg",
+  alt: "Headshot on a dark background with warm bokeh, plaid vest and chain necklace",
 }
 
-export const photoOgImage = "/photo/headshot-corporate.jpg"
+export const photoOgImage = "/photo/mvp-headshot-vest.jpg"
 
 export const photoSessions = [
   {
     slug: "headshots",
     title: "Headshots",
     category: "Headshots",
-    image: "/photo/headshot-beard.jpg",
-    alt: "Studio headshot of a man on a black backdrop",
+    image: "/photo/mvp-headshot-blazer.jpg",
+    alt: "Headshot in a cream blazer and gold earrings against a dark background",
     blurb:
       "LinkedIn, company bios, press, and casting. Clean light, a relaxed expression, and a crop that still reads at thumbnail size.",
   },
@@ -162,10 +162,9 @@ export const photoFaqs = [
 ] as const
 
 export const photoGallery = [
-  { src: "/photo/headshot-corporate.jpg", category: "Headshots", alt: "Corporate headshot in natural window light" },
-  { src: "/photo/headshot-executive.jpg", category: "Headshots", alt: "Executive portrait by an office window" },
-  { src: "/photo/headshot-actor.jpg", category: "Headshots", alt: "Actor-style headshot on a seamless backdrop" },
-  { src: "/photo/headshot-beard.jpg", category: "Headshots", alt: "Dramatic studio headshot on black" },
+  { src: "/photo/mvp-headshot-vest.jpg", category: "Headshots", alt: "Headshot on a dark background with warm bokeh, plaid vest and chain necklace" },
+  { src: "/photo/mvp-headshot-blazer.jpg", category: "Headshots", alt: "Headshot in a cream blazer and gold earrings against a dark background" },
+  { src: "/photo/mvp-headshot-glasses.jpg", category: "Headshots", alt: "Headshot with glasses and a dark green shirt on a charcoal backdrop" },
   { src: "/photo/branding-speaker.jpg", category: "Branding", alt: "Personal branding portrait in an office" },
   { src: "/photo/branding-lifestyle.jpg", category: "Branding", alt: "Brand lifestyle still of a working conversation" },
   { src: "/photo/branding-team.jpg", category: "Branding", alt: "Lifestyle portrait of a small group at sunset" },
