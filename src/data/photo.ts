@@ -39,7 +39,7 @@ export const photoSessions = [
   },
 ] as const
 
-export const photoExtras = ["Editorial and fashion", "Team days on site", "Couples and families", "Events"] as const
+export const photoExtras = ["Team days on site", "Couples and families", "Events"] as const
 
 export type PhotoPackage = {
   slug: string
@@ -170,8 +170,7 @@ export const photoGallery = [
   { src: "/photo/mvp-headshot-gold.jpg", category: "Headshots", alt: "Over-the-shoulder headshot with wavy blonde hair and gilded frames behind" },
   { src: "/photo/mvp-headshot-glitter.jpg", category: "Headshots", alt: "Close-up headshot with backlit curls, silver glitter makeup, and purple lips" },
   { src: "/photo/mvp-portrait-brick.jpg", category: "Portraits", alt: "Portrait in a green pleated top against a glazed brick wall" },
-  { src: "/photo/mvp-editorial-chrome.jpg", category: "Editorial", alt: "Editorial portrait in a chrome mirror-tile top with silver glitter makeup and purple lips" },
-  { src: "/photo/mvp-portrait-curls.jpg", category: "Editorial", alt: "Editorial portrait with voluminous curls, red lips, and a sequined gown" },
+  { src: "/photo/mvp-portrait-curls.jpg", category: "Portraits", alt: "Editorial portrait with voluminous curls, red lips, and a sequined gown" },
   { src: "/photo/branding-speaker.jpg", category: "Branding", alt: "Personal branding portrait in an office" },
   { src: "/photo/branding-lifestyle.jpg", category: "Branding", alt: "Brand lifestyle still of a working conversation" },
   { src: "/photo/branding-team.jpg", category: "Branding", alt: "Lifestyle portrait of a small group at sunset" },
