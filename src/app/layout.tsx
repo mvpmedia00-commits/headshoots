@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google"
 import type { ReactNode } from "react"
 
+import { MobileBookBar } from "@/components/mobile-book-bar"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { PHOTO_BRAND, photoOgImage } from "@/data/photo"
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s · MVP Media",
   },
   description:
-    "Chicago headshots, personal branding, portraits, families, and events with Matthew Phillips. Clean light. Files you can use.",
+    "Chicago headshots, personal branding, and portraits with Matthew Phillips. Guided posing, fast proofs, studio or on site.",
   applicationName: PHOTO_BRAND,
   robots: { index: true, follow: true },
   openGraph: {
@@ -60,9 +61,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${geistSans.variable} ${geistMono.variable} ${instrument.variable} dark h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[#070707] font-sans text-[#f4ede1]">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-[#c4a574] focus:px-4 focus:py-2 focus:text-[#14110e]"
+        >
+          Skip to content
+        </a>
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <SiteFooter />
+        <MobileBookBar />
       </body>
     </html>
   )

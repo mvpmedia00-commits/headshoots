@@ -1,14 +1,19 @@
 import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
+import { ArrowRight, Check, ChevronDown } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { BookingBand } from "@/components/booking-band"
+import { CtaLink } from "@/components/cta-link"
+import { PhotoPackages } from "@/components/photo-packages"
 import {
   PHOTO_EMAIL,
+  photoExtras,
   photoFaqs,
-  photoHero,
+  photoOgImage,
   photoProcess,
   photoSessions,
+  photoTrust,
 } from "@/data/photo"
 import { siteUrl } from "@/lib/site-url"
 
@@ -21,7 +26,7 @@ export default function PhotoHomePage() {
     "@context": "https://schema.org",
     "@type": "PhotographBusiness",
     name: "MVP Media",
-    image: photoHero.src,
+    image: photoOgImage,
     url: siteUrl(),
     email: PHOTO_EMAIL,
     areaServed: "Chicago, IL",
@@ -32,8 +37,7 @@ export default function PhotoHomePage() {
       addressCountry: "US",
     },
     founder: { "@type": "Person", name: "Matthew Phillips" },
-    description:
-      "Chicago headshots, personal branding, portraits, couples, and event photography.",
+    description: "Chicago headshots, personal branding, and portrait photography.",
   }
 
   return (
@@ -42,144 +46,165 @@ export default function PhotoHomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="relative min-h-[78vh] overflow-hidden">
-        <Image
-          src={photoHero.src}
-          alt={photoHero.alt}
-          fill
-          priority
-          className="object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/55 to-[#070707]/20" />
-        <div className="relative mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-end px-4 pb-16 sm:px-6">
+
+      {/* Hero */}
+      <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:pt-16 lg:pb-24">
+        <div>
           <p className="text-xs uppercase tracking-[0.28em] text-[#c4a574]">
-            Chicago · headshots · portraits
+            Chicago headshots &amp; portraits
           </p>
-          <h1 className="mt-4 max-w-3xl font-heading text-5xl leading-[1.05] sm:text-7xl">
-            Sharp. Human. Booked.
+          <h1 className="mt-4 font-heading text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
+            Look like the person people want to hire.
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-8 text-[#e8dcc8]">
-            Headshots, branding, and portraits with Matthew Phillips. Light that
-            reads as expensive. Files you can actually put on a site.
+          <p className="mt-6 max-w-xl text-lg leading-8 text-[#e8dcc8]">
+            Professional headshots and portraits with Matthew Phillips. I guide
+            every pose, so you walk out with photos you&apos;re proud to use —
+            even if you hate having your picture taken.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button nativeButton={false} render={<Link href="/booking" />} size="lg">
-              Book a session
-            </Button>
-            <Button
-              nativeButton={false}
-              variant="outline"
-              size="lg"
-              className="border-white/20 bg-black/30"
-              render={<Link href="/gallery" />}
-            >
-              View gallery
-            </Button>
+            <CtaLink href="/booking">Book your session</CtaLink>
+            <CtaLink href="/pricing" variant="outline">
+              See packages
+            </CtaLink>
           </div>
+          <ul className="mt-8 grid gap-2 text-sm text-[#e8dcc8] sm:grid-cols-3 sm:gap-4">
+            {photoTrust.map((item) => (
+              <li key={item} className="flex gap-2">
+                <Check className="mt-0.5 size-4 shrink-0 text-[#c4a574]" aria-hidden />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Sessions</p>
-        <h2 className="mt-2 font-heading text-4xl">What companies and people hire.</h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {photoSessions.map((session) => (
-            <article key={session.slug} className="rounded-3xl bg-[#14110e] p-6 ring-1 ring-white/10">
-              <h3 className="font-heading text-2xl">{session.title}</h3>
-              <p className="mt-3 leading-7 text-[#c9b8a0]">{session.blurb}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-y border-white/10 bg-[#100e0c]">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Process</p>
-            <h2 className="mt-2 font-heading text-4xl">Brief to delivery</h2>
-            <ol className="mt-6 space-y-4 text-[#e8dcc8]">
-              {photoProcess.map((item) => (
-                <li key={item.step}>
-                  <strong className="text-[#c4a574]">{item.step} </strong>
-                  {item.title} — {item.body}
-                </li>
-              ))}
-            </ol>
-          </div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           <Image
             src="/photo/headshot-corporate.jpg"
-            alt="Corporate headshot in window light"
-            width={1100}
-            height={1400}
-            className="h-full min-h-72 w-full rounded-3xl object-cover"
+            alt="Corporate headshot of a man in glasses by an office window"
+            width={1600}
+            height={2400}
+            priority
+            sizes="(min-width: 1024px) 26vw, 50vw"
+            className="row-span-2 h-full w-full rounded-3xl object-cover"
+          />
+          <Image
+            src="/photo/headshot-executive.jpg"
+            alt="Executive headshot of a woman in a blazer by a window"
+            width={1600}
+            height={2397}
+            priority
+            sizes="(min-width: 1024px) 22vw, 50vw"
+            className="aspect-[4/5] w-full rounded-3xl object-cover"
+          />
+          <Image
+            src="/photo/headshot-actor.jpg"
+            alt="Actor headshot on a gray backdrop"
+            width={1600}
+            height={2399}
+            priority
+            sizes="(min-width: 1024px) 22vw, 50vw"
+            className="aspect-[4/5] w-full rounded-3xl object-cover object-top"
           />
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Location</p>
-            <h2 className="mt-2 font-heading text-4xl">Chicago first. On site when the office is the set.</h2>
-            <p className="mt-4 max-w-xl text-lg leading-8 text-[#c9b8a0]">
-              Loop, South Loop, River North, and the suburbs. I come to your
-              office for team grids. Destination days are quoted, not assumed.
-            </p>
-            <Button nativeButton={false} className="mt-8" render={<Link href="/booking" />}>
-              Request a quote
-            </Button>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Use</p>
-            <h2 className="mt-2 font-heading text-4xl">Pictures that survive a website.</h2>
-            <ul className="mt-6 space-y-3 text-[#e8dcc8]">
-              <li>LinkedIn and speaker pages that still look like you at 80px.</li>
-              <li>Color that holds in print, not just a phone screen.</li>
-              <li>A usage note in writing so marketing can actually publish.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Questions</p>
-          <h2 className="mt-2 font-heading text-4xl">Before you write.</h2>
-          <dl className="mt-8 grid gap-6 md:grid-cols-2">
-            {photoFaqs.map((item) => (
-              <div key={item.q} className="rounded-3xl bg-[#14110e] p-6 ring-1 ring-white/10">
-                <dt className="font-heading text-xl">{item.q}</dt>
-                <dd className="mt-3 leading-7 text-[#c9b8a0]">{item.a}</dd>
-              </div>
+      {/* Services */}
+      <section className="border-t border-white/10 bg-[#100e0c]">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+          <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">What I shoot</p>
+          <h2 className="mt-2 max-w-2xl font-heading text-4xl sm:text-5xl">
+            Photos with a job to do.
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {photoSessions.map((session) => (
+              <Link
+                key={session.slug}
+                href={`/gallery?category=${session.category}`}
+                className="group overflow-hidden rounded-3xl bg-[#14110e] ring-1 ring-white/10 transition hover:ring-[#c4a574]/60"
+              >
+                <div className="aspect-[4/3] overflow-hidden md:aspect-[4/5]">
+                  <Image
+                    src={session.image}
+                    alt={session.alt}
+                    width={800}
+                    height={1000}
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-2xl">{session.title}</h3>
+                  <p className="mt-2 leading-7 text-[#c9b8a0]">{session.blurb}</p>
+                  <p className="mt-4 inline-flex items-center gap-1 text-sm text-[#c4a574]">
+                    See examples
+                    <ArrowRight className="size-4 transition group-hover:translate-x-0.5" aria-hidden />
+                  </p>
+                </div>
+              </Link>
             ))}
-          </dl>
+          </div>
+          <p className="mt-8 text-[#c9b8a0]">
+            Also available: {photoExtras.join(" · ")}.{" "}
+            <Link href="/contact" className="text-[#f4ede1] underline underline-offset-4">
+              Ask about it
+            </Link>
+          </p>
         </div>
       </section>
 
-      <section id="contact" className="border-t border-white/10 bg-[#100e0c]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+      {/* Packages */}
+      <section id="pricing" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Contact</p>
-            <h2 className="mt-2 font-heading text-4xl">Hire the studio.</h2>
-            <p className="mt-4 max-w-xl text-lg leading-8 text-[#c9b8a0]">
-              {PHOTO_EMAIL} — or the form. I reply with a range and dates.
-            </p>
+            <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Packages</p>
+            <h2 className="mt-2 font-heading text-4xl sm:text-5xl">Pick what fits.</h2>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <Button nativeButton={false} render={<a href={`mailto:${PHOTO_EMAIL}`} />}>
-              Email Matthew
-            </Button>
-            <Button
-              nativeButton={false}
-              variant="outline"
-              className="border-white/20"
-              render={<Link href="/contact" />}
-            >
-              Open contact form
-            </Button>
-          </div>
+          <Link href="/pricing" className="text-sm text-[#c9b8a0] underline underline-offset-4 hover:text-[#f4ede1]">
+            Compare all packages
+          </Link>
+        </div>
+        <div className="mt-10">
+          <PhotoPackages />
         </div>
       </section>
+
+      {/* Process */}
+      <section className="border-y border-white/10 bg-[#100e0c]">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+          <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">How it works</p>
+          <h2 className="mt-2 font-heading text-4xl sm:text-5xl">Easy from start to finish.</h2>
+          <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {photoProcess.map((item) => (
+              <li key={item.step} className="rounded-3xl bg-[#14110e] p-6 ring-1 ring-white/10">
+                <p className="font-heading text-4xl text-[#c4a574]">{item.step}</p>
+                <h3 className="mt-3 font-heading text-2xl">{item.title}</h3>
+                <p className="mt-2 leading-7 text-[#c9b8a0]">{item.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
+        <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Questions</p>
+        <h2 className="mt-2 font-heading text-4xl sm:text-5xl">Good to know.</h2>
+        <div className="mt-8 divide-y divide-white/10 border-y border-white/10">
+          {photoFaqs.map((item) => (
+            <details key={item.q} className="group py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-medium [&::-webkit-details-marker]:hidden">
+                {item.q}
+                <ChevronDown
+                  className="size-5 shrink-0 text-[#c4a574] transition group-open:rotate-180"
+                  aria-hidden
+                />
+              </summary>
+              <p className="mt-3 leading-7 text-[#c9b8a0]">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <BookingBand />
     </div>
   )
 }

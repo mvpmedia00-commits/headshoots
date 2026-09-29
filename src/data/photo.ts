@@ -12,34 +12,103 @@ export const photoOgImage = "/photo/headshot-corporate.jpg"
 export const photoSessions = [
   {
     slug: "headshots",
-    title: "Corporate headshots",
+    title: "Headshots",
+    category: "Headshots",
+    image: "/photo/headshot-beard.jpg",
+    alt: "Studio headshot of a man on a black backdrop",
     blurb:
-      "LinkedIn, press, speaker pages, and team grids. Clean light, real expression, a crop that still works at 40 pixels.",
+      "LinkedIn, company bios, press, and casting. Clean light, a relaxed expression, and a crop that still reads at thumbnail size.",
   },
   {
     slug: "branding",
     title: "Personal branding",
+    category: "Branding",
+    image: "/photo/branding-speaker.jpg",
+    alt: "Personal branding portrait of a smiling woman in an office",
     blurb:
-      "A short set that looks like your work, not a mall backdrop. Website, pitch deck, and the one photo people actually remember.",
+      "A set of images for your website, speaker page, and social — photographed where you work, so it looks like you.",
   },
   {
     slug: "portraits",
     title: "Portraits",
+    category: "Portraits",
+    image: "/photo/portrait-studio.jpg",
+    alt: "Golden-hour outdoor portrait of a woman",
     blurb:
-      "Studio or location. Directed, not a photo booth. You leave with a gallery you can print, not a folder of almosts.",
+      "Studio or on location around Chicago. Fully directed, so you never have to guess what to do with your hands.",
+  },
+] as const
+
+export const photoExtras = ["Team days on site", "Couples and families", "Events"] as const
+
+export type PhotoPackage = {
+  slug: string
+  name: string
+  /** Shown as "From $___". Leave empty to show "Custom quote". */
+  price: string
+  bestFor: string
+  features: readonly string[]
+  popular?: boolean
+}
+
+export const photoPackages: readonly PhotoPackage[] = [
+  {
+    slug: "express",
+    name: "Express headshot",
+    price: "",
+    bestFor: "A fast, polished LinkedIn or bio photo",
+    features: [
+      "30-minute session",
+      "1 outfit, 1 backdrop",
+      "3 retouched images",
+      "Online proofing gallery",
+    ],
   },
   {
-    slug: "couples",
-    title: "Couples and families",
-    blurb:
-      "Quiet direction, natural pacing, no fake laughing on command. Chicago parks, homes, and private rooms.",
+    slug: "signature",
+    name: "Signature headshot",
+    price: "",
+    bestFor: "Professionals who want options",
+    features: [
+      "60-minute session",
+      "Up to 3 outfits and looks",
+      "8 retouched images",
+      "LinkedIn-ready crops included",
+      "Posing and wardrobe guidance",
+    ],
+    popular: true,
   },
   {
-    slug: "events",
-    title: "Events",
-    blurb:
-      "Keynotes, galas, launches, and rooms where people hire. Coverage that reads as editorial, not party-flash.",
+    slug: "portrait",
+    name: "Portrait & branding",
+    price: "",
+    bestFor: "Websites, speakers, and creatives",
+    features: [
+      "90-minute session",
+      "Studio or one Chicago location",
+      "15 retouched images",
+      "Print-ready and web files",
+      "Pre-session planning call",
+    ],
   },
+  {
+    slug: "team",
+    name: "Team on site",
+    price: "",
+    bestFor: "Companies that need a consistent look",
+    features: [
+      "Portable studio at your office",
+      "Matching light and backdrop for everyone",
+      "Retouched image per person",
+      "Priced by headcount",
+    ],
+  },
+]
+
+export const photoTrust = [
+  "Proofs in a few days",
+  "Guided posing, start to finish",
+  "Studio or on site in Chicagoland",
 ] as const
 
 export const photoProcess = [
@@ -83,8 +152,12 @@ export const photoFaqs = [
     a: "Headshot selects in a few days. Full portrait and event galleries on the date we put in the agreement.",
   },
   {
-    q: "Do you photograph kids or teens?",
-    a: "Family sessions include minors with a parent or guardian on set. The after-dark boudoir studio is a separate 18+ site.",
+    q: "I'm awkward in photos. Will this work?",
+    a: "That describes most people who book. I direct every pose and expression, and we review shots on the back of the camera as we go.",
+  },
+  {
+    q: "How do I reserve a date?",
+    a: "Send a request through the booking form. I reply with availability and a quote, then a short written agreement locks your date.",
   },
 ] as const
 
@@ -101,8 +174,6 @@ export const photoGallery = [
   { src: "/photo/portrait-outdoor.jpg", category: "Portraits", alt: "Fashion portrait on a dark seamless" },
   { src: "/photo/portrait-couple.jpg", category: "Couples", alt: "Couple celebrating after their ceremony" },
   { src: "/photo/event-stage.jpg", category: "Events", alt: "Audience at a conference in low light" },
-  { src: "/photo/chicago-street.jpg", category: "Chicago", alt: "Cloud Gate and Michigan Avenue, Chicago" },
-  { src: "/photo/chicago-skyline.jpg", category: "Chicago", alt: "Chicago skyline at dusk looking toward the lake" },
 ] as const
 
 export type PhotoGalleryCategory = "All" | (typeof photoGallery)[number]["category"]
@@ -113,8 +184,8 @@ export const photoGalleryCategories = [
 ] as PhotoGalleryCategory[]
 
 export const photoNav = [
-  { href: "/", label: "Work" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const

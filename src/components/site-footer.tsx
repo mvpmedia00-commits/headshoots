@@ -1,23 +1,34 @@
 import Link from "next/link"
 
-import { PHOTO_EMAIL } from "@/data/photo"
+import { PHOTO_EMAIL, photoNav } from "@/data/photo"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-white/10 bg-[#070707]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-[#c9b8a0] sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p>© 2026 MVP Media · Matthew Phillips · Chicago</p>
-        <p className="flex flex-wrap gap-x-4 gap-y-1">
-          <a className="underline" href={`mailto:${PHOTO_EMAIL}`}>
+    <footer className="mt-auto border-t border-white/10 bg-[#070707] pb-20 md:pb-0">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 text-sm text-[#c9b8a0] sm:px-6 md:grid-cols-3">
+        <div>
+          <p className="font-heading text-2xl text-[#f4ede1]">MVP Media</p>
+          <p className="mt-2 leading-6">
+            Headshots and portraits by Matthew Phillips. Chicago and Chicagoland.
+          </p>
+        </div>
+        <nav aria-label="Footer" className="flex flex-col gap-2">
+          {photoNav.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-[#f4ede1]">
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/booking" className="hover:text-[#f4ede1]">
+            Book a session
+          </Link>
+        </nav>
+        <div>
+          <p className="text-[#f4ede1]">Get in touch</p>
+          <a className="mt-2 inline-block underline underline-offset-4 hover:text-[#f4ede1]" href={`mailto:${PHOTO_EMAIL}`}>
             {PHOTO_EMAIL}
           </a>
-          <Link className="underline" href="/contact">
-            Contact
-          </Link>
-          <Link className="underline" href="/booking">
-            Book
-          </Link>
-        </p>
+          <p className="mt-6 text-xs">© {new Date().getFullYear()} MVP Media · Chicago, IL</p>
+        </div>
       </div>
     </footer>
   )

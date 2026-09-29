@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useState } from "react"
 import { Menu } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -17,6 +18,8 @@ import { cn } from "@/lib/utils"
 
 export function SiteHeader() {
   const pathname = usePathname()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#070707]/85 backdrop-blur-md">
@@ -24,19 +27,17 @@ export function SiteHeader() {
         <Link href="/" className="flex items-baseline gap-2">
           <span className="font-heading text-xl tracking-tight text-[#f4ede1]">MVP Media</span>
           <span className="hidden text-[11px] uppercase tracking-[0.22em] text-[#c9b8a0] sm:inline">
-            Chicago · portraits
+            Chicago headshots
           </span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {photoNav.map((link) => {
-            const active =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href)
+            const active = pathname.startsWith(link.href)
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "rounded-full px-3 py-1.5 text-sm transition-colors",
                   active
@@ -48,22 +49,20 @@ export function SiteHeader() {
               </Link>
             )
           })}
-          <Button
-            nativeButton={false}
-            size="sm"
-            className="ml-2 bg-[#c4a574] text-[#14110e] hover:bg-[#d4b98a]"
-            render={<Link href="/booking" />}
+          <Link
+            href="/booking"
+            className="ml-3 inline-flex h-10 items-center rounded-full bg-[#c4a574] px-5 text-sm font-medium text-[#14110e] transition-colors hover:bg-[#d4b98a]"
           >
-            Book consultation
-          </Button>
+            Book a session
+          </Link>
         </nav>
-        <Sheet>
+        <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
           <SheetTrigger
             render={
-              <Button variant="ghost" size="icon" className="text-[#f4ede1] md:hidden" />
+              <Button variant="ghost" size="icon-lg" className="text-[#f4ede1] md:hidden" />
             }
           >
-            <Menu />
+            <Menu className="size-6" />
             <span className="sr-only">Open menu</span>
           </SheetTrigger>
           <SheetContent side="right" className="bg-[#1c1814] text-[#f4ede1] sm:max-w-xs">
@@ -71,10 +70,14 @@ export function SiteHeader() {
               <SheetTitle className="font-heading text-[#f4ede1]">MVP Media</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col gap-1 px-4">
+              <Link href="/" onClick={closeMenu} className="rounded-lg px-3 py-3 text-base hover:bg-white/10">
+                Home
+              </Link>
               {photoNav.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={closeMenu}
                   className="rounded-lg px-3 py-3 text-base hover:bg-white/10"
                 >
                   {link.label}
@@ -82,9 +85,10 @@ export function SiteHeader() {
               ))}
               <Link
                 href="/booking"
-                className="mt-2 rounded-lg bg-[#c4a574] px-3 py-3 text-center text-base text-[#14110e]"
+                onClick={closeMenu}
+                className="mt-4 rounded-full bg-[#c4a574] px-3 py-3 text-center text-base font-medium text-[#14110e]"
               >
-                Book consultation
+                Book a session
               </Link>
             </nav>
           </SheetContent>

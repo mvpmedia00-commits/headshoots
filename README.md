@@ -15,12 +15,18 @@ Open [http://127.0.0.1:4743](http://127.0.0.1:4743).
 
 ## Pages
 
-- `/` — work home
-- `/gallery` — headshots, branding, portraits, couples, events, Chicago
+- `/` — home: services, packages, process, FAQ
+- `/gallery` — filterable gallery with full-screen viewer (`/gallery?category=Headshots`)
+- `/pricing` — packages; "Book this" links to `/booking?package=<slug>`
 - `/about` — Matthew Phillips
-- `/contact` and `/booking` — inquiry form opens mail to `mvpmedia00@gmail.com`
+- `/booking` and `/contact` — request form opens mail to `mvpmedia00@gmail.com`
 
-Gallery frames are lighting and direction samples. Client galleries stay private. Nothing is stored on the server.
+## Edit your packages and prices
+
+Everything lives in `src/data/photo.ts`. Set each package's `price` (for example `"$250"`)
+to show "From $250"; leave it empty to show "Custom quote".
+
+Gallery frames are placeholders — swap in your own work under `public/photo/` and update `photoGallery`. Nothing is stored on the server.
 
 ## Stack
 
