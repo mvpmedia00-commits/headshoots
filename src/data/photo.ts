@@ -46,6 +46,9 @@ export const photoEvents = [
     slug: "conferences",
     icon: "mic",
     title: "Conferences & keynotes",
+    // Placeholder stock photo — swap for your own event work
+    image: "/photo/event-stage.jpg",
+    alt: "Audience at a conference in low light",
     blurb:
       "Speakers on stage, a full room, and the hallway conversations. Images ready for recaps, press, and next year's promo.",
   },
@@ -53,6 +56,9 @@ export const photoEvents = [
     slug: "galas",
     icon: "sparkles",
     title: "Galas, launches & parties",
+    // Placeholder stock photo — swap for your own event work
+    image: "/photo/portrait-couple.jpg",
+    alt: "Couple celebrating as guests throw confetti at an outdoor celebration",
     blurb:
       "Candid moments and posed groups, captured quietly so guests stay in the moment and the night still looks polished.",
   },
@@ -60,6 +66,8 @@ export const photoEvents = [
     slug: "booth",
     icon: "camera",
     title: "Headshot booth at your event",
+    image: "/photo/mvp-headshot-glasses.jpg",
+    alt: "Headshot with glasses and a dark green shirt on a charcoal backdrop",
     blurb:
       "A pop-up studio so attendees leave with a professional headshot. A perk people remember — and share with your name on it.",
   },

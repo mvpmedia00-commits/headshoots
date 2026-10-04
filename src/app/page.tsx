@@ -180,13 +180,25 @@ export default function PhotoHomePage() {
               return (
                 <article
                   key={event.slug}
-                  className="rounded-3xl bg-[#14110e] p-6 ring-1 ring-white/10"
+                  className="overflow-hidden rounded-3xl bg-[#14110e] ring-1 ring-white/10"
                 >
-                  <span className="flex size-12 items-center justify-center rounded-2xl bg-[#c4a574]/12 text-[#c4a574] ring-1 ring-[#c4a574]/30">
-                    <Icon className="size-6" aria-hidden />
-                  </span>
-                  <h3 className="mt-5 font-heading text-2xl">{event.title}</h3>
-                  <p className="mt-2 leading-7 text-[#c9b8a0]">{event.blurb}</p>
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={event.image}
+                      alt={event.alt}
+                      width={800}
+                      height={600}
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="h-full w-full object-cover object-[center_30%]"
+                    />
+                  </div>
+                  <div className="relative px-6 pb-6">
+                    <span className="-mt-6 flex size-12 items-center justify-center rounded-2xl bg-[#14110e] text-[#c4a574] ring-1 ring-[#c4a574]/40">
+                      <Icon className="size-6" aria-hidden />
+                    </span>
+                    <h3 className="mt-4 font-heading text-2xl">{event.title}</h3>
+                    <p className="mt-2 leading-7 text-[#c9b8a0]">{event.blurb}</p>
+                  </div>
                 </article>
               )
             })}
