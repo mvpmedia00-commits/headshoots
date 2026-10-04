@@ -39,7 +39,38 @@ export const photoSessions = [
   },
 ] as const
 
-export const photoExtras = ["Team days on site", "Couples and families", "Events"] as const
+export const photoExtras = ["Team days on site", "Couples and families"] as const
+
+export const photoEvents = [
+  {
+    slug: "conferences",
+    icon: "mic",
+    title: "Conferences & keynotes",
+    blurb:
+      "Speakers on stage, a full room, and the hallway conversations. Images ready for recaps, press, and next year's promo.",
+  },
+  {
+    slug: "galas",
+    icon: "sparkles",
+    title: "Galas, launches & parties",
+    blurb:
+      "Candid moments and posed groups, captured quietly so guests stay in the moment and the night still looks polished.",
+  },
+  {
+    slug: "booth",
+    icon: "camera",
+    title: "Headshot booth at your event",
+    blurb:
+      "A pop-up studio so attendees leave with a professional headshot. A perk people remember — and share with your name on it.",
+  },
+] as const
+
+export const photoEventIncludes = [
+  "Planning call and shot list before the day",
+  "Discreet coverage that doesn't interrupt the room",
+  "Edited online gallery for your team",
+  "Usage for your marketing, in writing",
+] as const
 
 export type PhotoPackage = {
   slug: string

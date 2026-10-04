@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
-import { ArrowRight, Check, ChevronDown } from "lucide-react"
+import { ArrowRight, Camera, Check, ChevronDown, Mic, Sparkles } from "lucide-react"
 
 import { BookingBand } from "@/components/booking-band"
 import { ChicagoSkyline } from "@/components/chicago-skyline"
@@ -9,6 +9,8 @@ import { CtaLink } from "@/components/cta-link"
 import { PhotoPackages } from "@/components/photo-packages"
 import {
   PHOTO_EMAIL,
+  photoEventIncludes,
+  photoEvents,
   photoExtras,
   photoFaqs,
   photoHero,
@@ -18,6 +20,8 @@ import {
   photoTrust,
 } from "@/data/photo"
 import { siteUrl } from "@/lib/site-url"
+
+const eventIcons = { mic: Mic, sparkles: Sparkles, camera: Camera } as const
 
 export const metadata: Metadata = {
   title: { absolute: "MVP Media — Chicago headshots and portraits" },
@@ -156,6 +160,50 @@ export default function PhotoHomePage() {
               Ask about it
             </Link>
           </p>
+        </div>
+      </section>
+
+      {/* Events */}
+      <section className="panel">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-20">
+          <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Events</p>
+          <h2 className="mt-2 max-w-2xl font-heading text-4xl sm:text-5xl">
+            Your event, told well.
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-[#c9b8a0]">
+            Corporate events, galas, and launches across Chicagoland — photographed like an
+            editorial story, not a party flash.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {photoEvents.map((event) => {
+              const Icon = eventIcons[event.icon]
+              return (
+                <article
+                  key={event.slug}
+                  className="rounded-3xl bg-[#14110e] p-6 ring-1 ring-white/10"
+                >
+                  <span className="flex size-12 items-center justify-center rounded-2xl bg-[#c4a574]/12 text-[#c4a574] ring-1 ring-[#c4a574]/30">
+                    <Icon className="size-6" aria-hidden />
+                  </span>
+                  <h3 className="mt-5 font-heading text-2xl">{event.title}</h3>
+                  <p className="mt-2 leading-7 text-[#c9b8a0]">{event.blurb}</p>
+                </article>
+              )
+            })}
+          </div>
+          <div className="mt-8 flex flex-col gap-6 rounded-3xl bg-black/30 p-6 ring-1 ring-white/10 lg:flex-row lg:items-center lg:justify-between">
+            <ul className="grid gap-3 text-[#e8dcc8] sm:grid-cols-2 sm:gap-x-8">
+              {photoEventIncludes.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <Check className="mt-1 size-4 shrink-0 text-[#c4a574]" aria-hidden />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <CtaLink href="/booking?package=events" className="shrink-0">
+              Get an event quote
+            </CtaLink>
+          </div>
         </div>
       </section>
 

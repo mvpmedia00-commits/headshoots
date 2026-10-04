@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils"
 const NOT_SURE = "not-sure"
 const choices = [
   ...photoPackages.map((pkg) => ({ value: pkg.slug, label: pkg.name, hint: pkg.bestFor })),
+  { value: "events", label: "Event coverage", hint: "Conferences, galas, launches" },
   { value: NOT_SURE, label: "Not sure yet", hint: "Help me choose" },
 ]
 
