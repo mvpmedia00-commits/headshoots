@@ -22,7 +22,7 @@ export function SiteHeader() {
   const closeMenu = () => setMenuOpen(false)
 
   return (
-    <header className="sticky top-[var(--frame)] z-40 border-b border-white/10 bg-[#070707]/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#070707]/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-baseline gap-2">
           <span className="font-heading text-xl tracking-tight text-[#f4ede1]">MVP Media</span>

@@ -11,42 +11,44 @@ export const metadata: Metadata = {
 
 export default function PhotoAboutPage() {
   return (
-    <div>
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <Image
-            src="/photo/chicago-skyline.jpg"
-            alt="Chicago skyline at dusk"
-            width={1600}
-            height={984}
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="aspect-[4/5] w-full rounded-3xl object-cover"
-          />
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Matthew Phillips</p>
-            <h1 className="mt-2 font-heading text-4xl sm:text-5xl">
-              Chicago photographer. Headshots, portraits, and the pictures companies publish.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-[#c9b8a0]">
-              MVP Media is the studio people hire when the photo has a job: a speaker page, a team
-              grid, a personal site, a family wall. I direct the session so you are not guessing in
-              front of the camera.
-            </p>
-            <ul className="mt-8 space-y-3 text-[#e8dcc8]">
-              <li>Corporate and actor headshots that still look like you at a glance.</li>
-              <li>
-                Brand sets for founders, counsel, and people who sell their face as much as their
-                work.
-              </li>
-              <li>Based in {PHOTO_CITY}. On-site teams welcome.</li>
-            </ul>
-            <p className="mt-8 leading-7 text-[#c9b8a0]">
-              Direct:{" "}
-              <a className="underline" href={`mailto:${PHOTO_EMAIL}`}>
-                {PHOTO_EMAIL}
-              </a>
-              . I read inquiries myself.
-            </p>
+    <div className="panel-stack">
+      <div className="panel">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <Image
+              src="/photo/chicago-skyline.jpg"
+              alt="Chicago skyline at dusk"
+              width={1600}
+              height={984}
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="aspect-[4/5] w-full rounded-3xl object-cover"
+            />
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] text-[#c4a574]">Matthew Phillips</p>
+              <h1 className="mt-2 font-heading text-4xl sm:text-5xl">
+                Chicago photographer. Headshots, portraits, and the pictures companies publish.
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-[#c9b8a0]">
+                MVP Media is the studio people hire when the photo has a job: a speaker page, a team
+                grid, a personal site, a family wall. I direct the session so you are not guessing
+                in front of the camera.
+              </p>
+              <ul className="mt-8 space-y-3 text-[#e8dcc8]">
+                <li>Corporate and actor headshots that still look like you at a glance.</li>
+                <li>
+                  Brand sets for founders, counsel, and people who sell their face as much as their
+                  work.
+                </li>
+                <li>Based in {PHOTO_CITY}. On-site teams welcome.</li>
+              </ul>
+              <p className="mt-8 leading-7 text-[#c9b8a0]">
+                Direct:{" "}
+                <a className="underline" href={`mailto:${PHOTO_EMAIL}`}>
+                  {PHOTO_EMAIL}
+                </a>
+                . I read inquiries myself.
+              </p>
+            </div>
           </div>
         </div>
       </div>

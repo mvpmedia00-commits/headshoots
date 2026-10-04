@@ -60,10 +60,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${instrument.variable} dark h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-[#070707] p-[var(--frame)] font-sans text-[#f4ede1]">
+      <body className="flex min-h-full flex-col bg-[#070707] font-sans text-[#f4ede1]">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-8 focus:left-8 focus:z-50 focus:rounded-full focus:bg-[#c4a574] focus:px-4 focus:py-2 focus:text-[#14110e]"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-[#c4a574] focus:px-4 focus:py-2 focus:text-[#14110e]"
         >
           Skip to content
         </a>
@@ -73,7 +73,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </main>
         <SiteFooter />
         <MobileBookBar />
-        <div aria-hidden className="site-frame pointer-events-none fixed inset-0 z-[45]" />
       </body>
     </html>
   )
